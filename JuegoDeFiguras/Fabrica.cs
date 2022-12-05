@@ -68,7 +68,7 @@ namespace JuegoDeFiguras
             
             while (!cancellationToken.IsCancellationRequested)
             {
-                Figura figura = null;
+                Figura figb = null;
                 double ancho, alto;
 
                 int w = randomFiguras.Next(0, todasLasFiguras.Count-1);
@@ -77,15 +77,15 @@ namespace JuegoDeFiguras
                 ConstructorInfo ctor = type.GetConstructor(new[] { typeof(double), typeof(double), typeof(double), typeof(double), typeof(Color) });
                 if(ctor != null)
                 {
-                    figura = (Figura)ctor.Invoke(new object[] { 0, 0,
+                    figb = (Figura)ctor.Invoke(new object[] { 0, 0,
                             randomFiguras.Next(this.AnchoDibujo), 0,
                             SeleccionarColor() });
                     DefineAnchoAlto(figura.Forma, out ancho, out alto);
-                    figura.Ancho = ancho;
-                    figura.Alto = alto;
+                    figb.Ancho = ancho;
+                    figb.Alto = alto;
 
-                    if (figura != null)
-                        this.ContenedorFiguras.Enqueue(figura);
+                    if (figb != null)
+                        this.ContenedorFiguras.Enqueue(figb);
                 }
                 Thread.Sleep(500);
                 figura = null;
@@ -128,7 +128,6 @@ namespace JuegoDeFiguras
         }
         private Color SeleccionarColor()
         {
-            int valor = randomColorRGB.Next(0, 255);
 
             int R = randomColorRGB.Next(0, 255);
             int G = randomColorRGB.Next(0, 255);
