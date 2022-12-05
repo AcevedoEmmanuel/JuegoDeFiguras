@@ -63,20 +63,20 @@ namespace JuegoDeFiguras
                 double Dx = 0, Dy = 0;
                 List<Figura> figurasAEliminar = new List<Figura>();                
 
-                foreach(Figura figura in this.Figuras)
+                foreach(Figura fig in this.Figuras)
                 {
                     // DETERMINAR QUIEN ESTA A LA IZQUIERDA Y DERECHA
-                    if(figura.X <= this.Jugador.X)
-                        Dx = Math.Abs(figura.X - (this.Jugador.X + this.Jugador.Ancho));
+                    if(fig.X <= this.Jugador.X)
+                        Dx = Math.Abs(fig.X - (this.Jugador.X + this.Jugador.Ancho));
                     else
-                        Dx = Math.Abs(this.Jugador.X - (figura.X + figura.Ancho));
+                        Dx = Math.Abs(this.Jugador.X - (fig.X + fig.Ancho));
 
-                    Dy = Math.Abs(figura.Y - (this.Jugador.Y + this.Jugador.Alto));
+                    Dy = Math.Abs(fig.Y - (this.Jugador.Y + this.Jugador.Alto));
 
-                    if (Dx < figura.Ancho + this.Jugador.Ancho &&
-                        Dy < figura.Alto + this.Jugador.Alto)
+                    if (Dx < fig.Ancho + this.Jugador.Ancho &&
+                        Dy < fig.Alto + this.Jugador.Alto)
                     { // HAY COLISIÓN
-                        figurasAEliminar.Add(figura);
+                        figurasAEliminar.Add(fig);
                         this.Contador++;
                     }
                 }
